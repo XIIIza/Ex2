@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WayPointMovement : MonoBehaviour
 {
-    public Transform _path;
+    [SerializedField] private Transform _path;
     [SerializeField] private float _speed;
+    
     private Transform[] _points;
     private int _currentPoint;
 
@@ -21,9 +22,9 @@ public class WayPointMovement : MonoBehaviour
 
     void Update()
     {
-        Transform target = _points[_currentPoint];
-
         var direction = (target.position - transform.position).normalized;
+
+        Transform target = _points[_currentPoint];
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, _speed * Time.deltaTime);
 

@@ -21,11 +21,13 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
+        var waitForSecond = new WaitForSeconds(2f);
+    
         for (int i = 0; i < _points.Length; i++)
         {
             Instantiate(_enemy, _points[i].position, Quaternion.identity);
 
-            yield return new WaitForSeconds(2);
+            yield return waitForSecond;
         }
     }
 }
